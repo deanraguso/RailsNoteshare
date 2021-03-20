@@ -1,24 +1,19 @@
-# README
+# Rails Noteshare 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Dean Raguso
 
-Things you may want to cover:
+## Purpose
+This Rails application will be a smooth interface for recording notes, having them saved securely to the cloud. The application will be available on both desktop and mobile web broswers.
 
-* Ruby version
+## Features
+- Your own secure account login.
+- Responsive design that works on all devices.
+- Full CRUD functionality for each note and account information.
+- An API for 3rd party application interfaces.
+- Share notes with other users by invitation.
 
-* System dependencies
 
-* Configuration
+## Issues
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Project Status
+Under Construction
