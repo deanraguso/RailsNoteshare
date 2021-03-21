@@ -1,1 +1,5 @@
-<%= %>
+<%= form_for @note do |f| %>
+    Title: <%= f.text_field :title %><br/>
+    Body: <%= f.text_field :body %><br/>
+    <%= f.submit %>
+<% end %>
