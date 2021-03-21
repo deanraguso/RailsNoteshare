@@ -1,4 +1,6 @@
 <h1><%= @note.title %></h1>
 <h2><%= @note.created_at %></h2>
 <p><%= @note.body %></p>
+
+<strong><%= link_to "Edit", edit_note_path(@note) %></strong>
 <strong><%= link_to "Delete", note_path(@note), method: :delete %></strong>

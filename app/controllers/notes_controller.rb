@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-    before_action :note_instance, only: [:show, :destroy, :update] 
+    before_action :note_instance, only: [:show, :destroy, :edit, :update] 
 
     def index
         @notes = Note.all.order(created_at: :desc)
@@ -21,9 +21,15 @@ class NotesController < ApplicationController
         redirect_to root_path
     end
     def update
+        if @note.update(params[:note].permit(:title,:body))
+            redirect_to @note
+        else
+            render 'edit'
+        end
+    end
+    def edit
     end
     def show
-        @note = Note.find(params[:id])
     end
 
     private 
