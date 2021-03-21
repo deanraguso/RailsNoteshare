@@ -4,4 +4,5 @@
     <h2><%= link_to note.title, note %></h2>
     <h3><%= note.created_at %></h3>
     <p><%= note.body %></p>
+    <strong><%= link_to "Delete", note_path(note), method: :delete %></strong>
 <% end %>

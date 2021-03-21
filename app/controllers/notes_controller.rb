@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-    before_action :note_instance, only: [:show] 
+    before_action :note_instance, only: [:show, :destroy, :update] 
 
     def index
         @notes = Note.all
@@ -17,6 +17,8 @@ class NotesController < ApplicationController
         end
     end
     def destroy
+        @note.destroy
+        redirect_to root_path
     end
     def update
     end
