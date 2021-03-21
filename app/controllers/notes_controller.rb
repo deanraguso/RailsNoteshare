@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+    before_action :note_instance, only: [:show] 
+
     def index
         @notes = Note.all
     end
@@ -26,5 +28,7 @@ class NotesController < ApplicationController
     def note_params
         params.require(:note).permit(:title, :body)
     end
-    
+    def note_instance
+        @note = Note.find(params[:id])
+    end
 end
