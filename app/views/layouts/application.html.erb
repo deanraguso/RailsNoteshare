@@ -10,8 +10,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <body class="container">
+
   <nav> 
-    <ul class="nav justify-content-end">
+    <ul class="navbar nav justify-content-end navbar-expand-lg navbar-light bg-light">
       <% if user_signed_in? %>
         <li class="nav-item">
           <a class="nav-link" href=<%=root_path%> tabindex="-1" aria-disabled="true">
@@ -34,10 +36,10 @@
   </nav>
 
   <!-- Devise Requirements -->
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!-- <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
 
-  <body>
+  
     <%= yield %>
   </body>
 </html>
