@@ -1,12 +1,20 @@
 class NotesController < ApplicationController
     before_action :note_instance, only: [:show, :destroy, :edit, :update] 
-    before_action :cu, only: [:index]
+    before_action :current_uid, only: [:index]
     
     def index
-        @notes = Note.all.order(created_at: :desc)
+        if user_signed_in?
+            @notes = Note.all.order(created_at: :desc)
+        else
+            redirect_to new_user_session_url
+        end
     end
     def new
-        @note = Note.new
+        if user_signed_in?
+            @note = Note.new
+        else
+            redirect_to new_user_session_url
+        end
     end
     def create
         @note = Note.new(note_params)
@@ -25,8 +33,8 @@ class NotesController < ApplicationController
         if @note.update(params[:note].permit(:title,:body))
             redirect_to @note
         else
-            render 'edit'
-        end
+            redirect_to new_user_session_url
+        end 
     end
     def edit
     end
@@ -35,12 +43,16 @@ class NotesController < ApplicationController
 
     private 
     def note_params
-        params.require(:note).permit(:title, :body)
+        params.require(:note).permit(:title, :body).merge(user_id: current_user.id)
     end
     def note_instance
         @note = Note.find(params[:id])
     end
-    def cu
-        @cu = current_user
+    def current_uid
+        if user_signed_in?
+            @current_uid = current_user.id
+        else
+            "Not Logged In"
+        end
     end
 end
