@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
     before_action :note_instance, only: [:show, :destroy, :edit, :update] 
-
+    before_action :cu, only: [:index]
+    
     def index
         @notes = Note.all.order(created_at: :desc)
     end
@@ -38,5 +39,8 @@ class NotesController < ApplicationController
     end
     def note_instance
         @note = Note.find(params[:id])
+    end
+    def cu
+        @cu = current_user
     end
 end

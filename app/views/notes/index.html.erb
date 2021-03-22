@@ -3,6 +3,7 @@
 <% @notes.each do |note| %>
     <h2><%= link_to note.title, note %></h2>
     <h3><%= note.created_at %></h3>
+    <h3>Created By: <%= @current_user %></h3>
     <p><%= note.body %></p>
     <strong><%= link_to "Delete", note_path(note), method: :delete %></strong>
     <strong><%= link_to "Edit", edit_note_path(note) %></strong>
