@@ -1,10 +1,10 @@
 class NotesController < ApplicationController
     before_action :note_instance, only: [:show, :destroy, :edit, :update] 
-    before_action :current_uid, only: [:index]
     
     def index
         if user_signed_in?
-            @notes = Note.all.order(created_at: :desc)
+            @notes = current_user.notes.order(created_at: :DESC)
+            # @notes = Note.all.order(created_at: :desc)
         else
             redirect_to new_user_session_url
         end
@@ -37,8 +37,18 @@ class NotesController < ApplicationController
         end 
     end
     def edit
+        if current_user.id == @note.user_id
+            #User can only see their own notes
+        else
+            redirect_to '/notes'
+        end
     end
     def show
+        if current_user.id == @note.user_id
+            #User can only see their own notes
+        else
+            redirect_to '/notes'
+        end
     end
 
     private 
@@ -47,12 +57,5 @@ class NotesController < ApplicationController
     end
     def note_instance
         @note = Note.find(params[:id])
-    end
-    def current_uid
-        if user_signed_in?
-            @current_uid = current_user.id
-        else
-            "Not Logged In"
-        end
     end
 end
