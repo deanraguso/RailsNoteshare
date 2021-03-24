@@ -1,5 +1,9 @@
 <h2>Sign up</h2>
 
+<div class="img" style="display:flex;width:100%;justify-content:center">
+  <%= image_tag 'Data Arranging_Outline.png', style: 'height:auto;width:60%;' %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
