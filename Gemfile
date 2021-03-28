@@ -59,3 +59,6 @@ gem 'devise'
 
 #Bootstrap
 gem 'bootstrap'
+
+#API Related
+gem 'grape'

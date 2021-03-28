@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root "notes#index"
   
   resources :notes
+
+  #For API
+  mount API::Base, at: "/"
+
 end
